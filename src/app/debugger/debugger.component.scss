@@ -1,0 +1,12 @@
+:host{
+  display: block;
+  padding: 20px;
+  margin: 20px;
+  border: 1px solid gray;
+}
+
+.notes {
+  display: flex;
+  gap: 8px;
+  min-height: 20px;
+}
