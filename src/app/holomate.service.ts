@@ -11,7 +11,8 @@ export class HolomateService {
 
   data: HolomateData = EMPTY_HOLOMATE_DATA;
 
-  changes$ = new BehaviorSubject<HolomateData>(this.data);
+  notes$ = new BehaviorSubject<string[]>(this.data.notes);
+  knob$ = new BehaviorSubject<number>(this.data.knob);
 
   player: Player | undefined;
 
@@ -46,7 +47,7 @@ export class HolomateService {
     // Listen to 'note on' events on channels 1, 2 and 3 of the first input MIDI device
     WebMidi.inputs[0].addListener("noteon", e => {
       this.data.notes.push(e.note.identifier);
-      this.changes$.next(this.data);
+      this.notes$.next(this.data.notes);
       if(this.player){
         this.player.play(e.note.identifier);
       }
@@ -55,7 +56,7 @@ export class HolomateService {
 
     WebMidi.inputs[0].addListener("noteoff", e => {
       this.data.notes = this.data.notes.filter((note) => note != e.note.identifier);
-      this.changes$.next(this.data);
+      this.notes$.next(this.data.notes);
 
     }, {channels: [1, 2, 3]});
   }
@@ -66,7 +67,7 @@ export class HolomateService {
     WebMidi.inputs[0].addListener('controlchange', e => {
       const value = Math.round(e.value as number * 100);
       this.data.knob = value;
-     // this.changes$.next(this.data);
+      this.knob$.next(this.data.knob);
     }, {channels: [1, 2, 3]});
   }
 }

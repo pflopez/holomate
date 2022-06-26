@@ -25,7 +25,9 @@ export class AppComponent implements OnInit {
   start(){
     this.started = true;
     this.holomate.enable();
-    this.holomate.changes$.subscribe(() => this.changeDetection.detectChanges());
+
+    this.holomate.notes$.subscribe(() => this.changeDetection.detectChanges());
+    this.holomate.knob$.subscribe(() => this.changeDetection.detectChanges());
   }
 
 

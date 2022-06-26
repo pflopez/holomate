@@ -29,10 +29,10 @@ export class HolomateComponent implements OnInit {
   activeNotes: string[] = [];
 
 
-  notes$ = this.holomate.changes$.pipe(map(d => {
+  notes$ = this.holomate.notes$.pipe(map(d => {
 
     this.notes.forEach(k => {
-      k.active = d.notes.some(note => note === k.note);
+      k.active = d.some(note => note === k.note);
     })
     this.changeDetection.detectChanges();
     return this.notes;
