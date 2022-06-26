@@ -1,8 +1,10 @@
 :host{
   display: block;
-  padding: 20px;
+  padding: 10px;
   margin: 20px;
   border: 1px solid gray;
+  position: absolute;
+  right: 0;
 }
 
 .notes {

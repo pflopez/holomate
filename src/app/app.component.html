@@ -1,2 +1,3 @@
 <app-debugger [data]="data" *ngIf="started"></app-debugger>
-<button (click)="start()">Start</button>
+<app-holomate *ngIf="started"></app-holomate>
+<button (click)="start()" *ngIf="!started">Start</button>

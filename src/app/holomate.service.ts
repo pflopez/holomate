@@ -54,8 +54,7 @@ export class HolomateService {
     }, {channels: [1, 2, 3]});
 
     WebMidi.inputs[0].addListener("noteoff", e => {
-
-      this.data.notes = this.data.notes.filter((note) => note != e.note.identifier)
+      this.data.notes = this.data.notes.filter((note) => note != e.note.identifier);
       this.changes$.next(this.data);
 
     }, {channels: [1, 2, 3]});
@@ -67,7 +66,7 @@ export class HolomateService {
     WebMidi.inputs[0].addListener('controlchange', e => {
       const value = Math.round(e.value as number * 100);
       this.data.knob = value;
-      this.changes$.next(this.data);
+     // this.changes$.next(this.data);
     }, {channels: [1, 2, 3]});
   }
 }
