@@ -1,1 +1,2 @@
-<app-debugger [data]="data"></app-debugger>
+<app-debugger [data]="data" *ngIf="started"></app-debugger>
+<button (click)="start()">Start</button>
