@@ -1,0 +1,93 @@
+
+:host {
+  --main-bg-color: white; ///#0f2332;
+  --main-border-color: #5a5a5a;
+  --btn-bg-color:  white ;//#989898;
+  --btn-bg-top-color:  white ;//#eaeaea;
+  --btn-border-color:  black ;//#4b5d69;
+  --btn-size: 80px;
+  display: flex;
+  border: 1px solid var(--main-border-color);
+  background-color: var(--main-bg-color);
+  border-radius: 8px;
+  width: 600px;
+  height: 378px;
+  justify-content: space-between;
+  margin: 20px auto;
+  align-items: center;
+  position: relative;
+
+  &::before {
+    content: "";
+    display: block;
+    border: 1px solid black;
+    width: 600px;
+    height: 378px;
+    top: 8px;
+    left: -1px;
+    position: absolute;
+    border-radius: 8px;
+    z-index: -1;
+  }
+}
+
+.grid {
+  padding: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 14px;
+  align-items: center;
+  justify-content: center;
+}
+
+button {
+  border-radius: 50%;
+  width: var(--btn-size);
+  height: var(--btn-size);
+  background-color: var(--btn-bg-color);
+  border: 1px solid var(--btn-border-color);
+  color: var(--btn-border-color);
+  position: relative;
+  z-index: 10;
+  &:active , &.active {
+    &::before {
+      top: -1px;
+    }
+  }
+
+  &::before {
+    content: "";
+    display: block;
+    background-color: var(--btn-bg-top-color);
+    border: 1px solid var(--btn-border-color);
+    top: -6px;
+    left: -1px;
+    position: absolute;
+    border-radius: 50%;
+    width: var(--btn-size);
+    height: var(--btn-size);
+  }
+}
+
+.knob-space {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.knob {
+  --btn-size: 120px;
+  &:active {
+    &::before {
+      top: -32px;
+    }
+  }
+
+  &::before {
+    top: -32px;
+   // z-index: 10;
+  }
+
+
+}
