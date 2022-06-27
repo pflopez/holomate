@@ -3,7 +3,7 @@
   --main-bg-color: white;
   --btn-bg-color:  white ;
   --btn-bg-active-color:  #f0f0f0 ;
-  --border-color:  #666;
+  --border-color:  #a0a0a0;
   --btn-size: 45px;
   --padding:  30px 20px;
   display: flex;
@@ -53,8 +53,9 @@
     display: block;
     width: 2px;
     height: 40%;
-    background-color: black;
+    background-color: var(--border-color);
     position: absolute;
     left: 50%;
+    bottom: 0;
   }
 }

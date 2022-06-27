@@ -1,5 +1,5 @@
 <div class="knob-space">
-  <div class="control control__knob"></div>
+  <div class="control control__knob" [style]="rotation$ | async"></div>
 </div>
 <section class="grid">
   <div class="control" *ngFor="let note of notes$ | async" [ngClass]="{active: note.active}"></div>
