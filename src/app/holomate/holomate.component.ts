@@ -30,17 +30,22 @@ export class HolomateComponent implements OnInit {
 
 
   notes$ = this.holomate.notes$.pipe(map(d => {
-
     this.notes.forEach(k => {
       k.active = d.some(note => note === k.note);
     })
     this.changeDetection.detectChanges();
     return this.notes;
 
-  }))
+  }));
+
+  rotation$ = this.holomate.knob$.pipe(map(value => {
+    const deg = value * 360 / 100;
+    // transform to degree?
+    return `${deg}deg`;
+  }));
 
 
-  constructor(private holomate: HolomateService,  private changeDetection: ChangeDetectorRef) {
+  constructor(private holomate: HolomateService, private changeDetection: ChangeDetectorRef) {
   }
 
   ngOnInit(): void {

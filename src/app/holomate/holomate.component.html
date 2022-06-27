@@ -1,6 +1,8 @@
 <div class="knob-space">
-  <button class="knob"></button>
+  <div class="control control__knob"></div>
 </div>
 <section class="grid">
-  <button *ngFor="let note of notes$ | async" [ngClass]="{active: note.active}"></button>
+  <div class="control" *ngFor="let note of notes$ | async" [ngClass]="{active: note.active}"></div>
 </section>
+
+

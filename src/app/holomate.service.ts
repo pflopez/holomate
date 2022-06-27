@@ -26,8 +26,6 @@ export class HolomateService {
 
   onMidiEnabled() {
     this.listenForDevice();
-    this.listenForNotes();
-    this.listenForKnob();
   }
 
   listenForDevice(){
@@ -40,6 +38,8 @@ export class HolomateService {
         inputNames.push(`${index}: ${device.name}`);
       });
       this.data.name = inputNames.join(',');
+      this.listenForNotes();
+      this.listenForKnob();
     }
   }
 
