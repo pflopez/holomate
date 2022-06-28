@@ -39,6 +39,7 @@ export class Player {
   }
 
   updateEffect(value: number) {
+    console.log( value / 100);
     if(this.effects['delay']){
       this.effects['delay'].delayTime = value * 10;
     }
@@ -47,6 +48,9 @@ export class Player {
     }
     if(this.effects['low-pass']){
       this.effects['low-pass'].frequency = value * 10;
+    }
+    if(this.effects['reverb']){
+      this.effects['reverb'].wetLevel = value / 100;
     }
   }
 
@@ -94,6 +98,19 @@ export class Player {
           bypass: 0
         });
         this.effects["overdrive"] = fx;
+        break
+
+      case "reverb":
+        fx = new this.tuna.Convolver({
+          highCut: 22050,                         //20 to 22050
+          lowCut: 20,                             //20 to 22050
+          dryLevel: 1,                            //0 to 1+
+          wetLevel: 1,                            //0 to 1+
+          level: 1,                               //0 to 1+, adjusts total output of both wet and dry
+          impulse: "assets/impulses/impulse_rev.wav",    //the path to your impulse response
+          bypass: 0
+        });
+        this.effects["reverb"] = fx;
         break
     }
     if (fx) {

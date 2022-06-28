@@ -8,4 +8,4 @@ export interface HolomateData {
 export const EMPTY_HOLOMATE_DATA = { name: '', knob: 0, notes: [], connected: false}
 
 
-export type Effect = 'delay' | 'low-pass' | 'overdrive';
+export type Effect = 'delay' | 'low-pass' | 'overdrive' | 'reverb';

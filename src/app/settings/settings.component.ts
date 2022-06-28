@@ -23,6 +23,10 @@ export class SettingsComponent implements OnInit {
     map(effects => effects.some(f => f === 'overdrive'))
   )
 
+  reverbOn$ = this.holomate.effects$.pipe(
+    map(effects => effects.some(f => f === 'reverb'))
+  )
+
   constructor(private holomate: HolomateService) {
   }
 
