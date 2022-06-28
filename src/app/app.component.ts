@@ -1,5 +1,5 @@
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
-import {Effect, EMPTY_HOLOMATE_DATA, HolomateData} from "./holomate";
+import {ChangeDetectorRef, Component, HostListener, OnInit} from '@angular/core';
+import {EMPTY_HOLOMATE_DATA, HolomateData} from "./holomate";
 import {HolomateService} from "./holomate.service";
 
 @Component({
@@ -13,6 +13,8 @@ export class AppComponent implements OnInit {
 
   data: HolomateData = EMPTY_HOLOMATE_DATA;
 
+  showDebugger = false;
+
   started = false;
 
   constructor(private holomate: HolomateService, private changeDetection: ChangeDetectorRef) {
@@ -22,7 +24,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
   }
 
-  start(){
+  start() {
     this.started = true;
     this.holomate.enable();
 
@@ -30,9 +32,12 @@ export class AppComponent implements OnInit {
     this.holomate.knob$.subscribe(() => this.changeDetection.detectChanges());
   }
 
-  addEffect(effect: Effect){
-    this.holomate.addEffect(effect);
+  @HostListener('window:keyup', ['$event'])
+  keyEvent(event: KeyboardEvent) {
+    if (event.key == 'd') {
+      // D key
+      this.showDebugger = !this.showDebugger;
+    }
   }
-
 
 }

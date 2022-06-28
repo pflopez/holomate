@@ -14,6 +14,7 @@ export class HolomateService {
   notes$ = new BehaviorSubject<string[]>(this.data.notes);
   knob$ = new BehaviorSubject<number>(this.data.knob);
   effect$ = new Subject<Effect>();
+  effects$ = new Subject<Effect[]>();
 
   player: Player | undefined;
 
@@ -40,6 +41,7 @@ export class HolomateService {
         inputNames.push(`${index}: ${device.name}`);
       });
       this.data.name = inputNames.join(',');
+      this.data.connected = true;
       this.listenForNotes();
       this.listenForKnob();
     }
@@ -74,12 +76,11 @@ export class HolomateService {
     }, {channels: [1, 2, 3]});
   }
 
-
-  addEffect(effect: Effect) {
-    if (this.player) {
-      this.player.addEffect(effect);
+  toggleEffect(effect: Effect){
+    if(this.player){
+      const effects = this.player.toggleEffect(effect);
+      this.effects$.next(effects);
     }
-    this.effect$.next(effect);
   }
 
 }

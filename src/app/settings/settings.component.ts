@@ -1,5 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Effect} from "../holomate";
+import {HolomateService} from "../holomate.service";
+import {map, tap} from "rxjs";
 
 @Component({
   selector: 'app-settings',
@@ -8,19 +10,28 @@ import {Effect} from "../holomate";
 })
 export class SettingsComponent implements OnInit {
 
-  @Output() addEffect = new EventEmitter<Effect>();
+  delayOn$ = this.holomate.effects$.pipe(
+    tap(effe => console.log(effe)),
+    map(effects => effects.some(f => f === 'delay'))
+  )
 
-  activeEffect: Effect = 'off';
+  filterOn$ = this.holomate.effects$.pipe(
+    map(effects => effects.some(f => f === 'low-pass'))
+  )
 
-  constructor() {
+  overdriveOn$ = this.holomate.effects$.pipe(
+    map(effects => effects.some(f => f === 'overdrive'))
+  )
+
+  constructor(private holomate: HolomateService) {
   }
 
   ngOnInit(): void {
   }
 
   effect(effect: Effect) {
-    this.activeEffect = effect;
-    this.addEffect.emit(effect);
+    this.holomate.toggleEffect(effect);
   }
+
 
 }

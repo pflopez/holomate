@@ -28,8 +28,7 @@ export class Player {
 
   tuna = new Tuna(Howler.ctx);
 
-
-  effect: any;
+  effects: Partial<Record<Effect, any>> = {};
 
   constructor() {
 
@@ -40,35 +39,43 @@ export class Player {
   }
 
   updateEffect(value: number) {
-    if (this.effect?.delayTime) {
-      this.effect.delayTime = value * 10;
+    if(this.effects['delay']){
+      this.effects['delay'].delayTime = value * 10;
     }
-    if (this.effect?.frequency) {
-      this.effect.frequency = value * 10;
+    if(this.effects['overdrive']){
+      this.effects['overdrive'].drive = value / 100;
     }
-    if(this.effect?.drive){
-      this.effect.drive = value / 100;
+    if(this.effects['low-pass']){
+      this.effects['low-pass'].frequency = value * 10;
     }
   }
-  
 
-  addEffect(effect: Effect) {
-    if (this.effect) {
+  private removeEffect(effect: Effect) {
+    const tunaEffect = this.effects[effect];
+    if (tunaEffect) {
       // @ts-ignore
-      Howler.removeEffect(this.effect);
+      Howler.removeEffect(tunaEffect);
+      delete this.effects[effect];
     }
+  }
+
+
+  private addEffect(effect: Effect) {
+    let fx: any;
     switch (effect) {
+
       case "low-pass":
-        this.effect = new this.tuna.Filter({
+        fx = new this.tuna.Filter({
           frequency: 800,         //20 to 22050
           Q: 1,                   //0.001 to 100
           gain: 0,                //-40 to 40 (in decibels)
           filterType: "lowpass",  //lowpass, highpass, bandpass, lowshelf, highshelf, peaking, notch, allpass
           bypass: 0
         });
+        this.effects['low-pass'] = fx;
         break
       case 'delay':
-        this.effect = new this.tuna.Delay({
+        fx = new this.tuna.Delay({
           feedback: 0.45,    //0 to 1+
           delayTime: 100,    //1 to 10000 milliseconds
           wetLevel: 0.5,     //0 to 1+
@@ -76,19 +83,33 @@ export class Player {
           cutoff: 20000,      //cutoff frequency of the built in lowpass-filter. 20 to 22050
           bypass: 0
         });
+        this.effects["delay"] = fx;
         break
       case "overdrive":
-        this.effect = new this.tuna.Overdrive({
+        fx = new this.tuna.Overdrive({
           outputGain: -9.154,           //-42 to 0 in dB
           drive: 0.197,                 //0 to 1
           curveAmount: 0.979,           //0 to 1
           algorithmIndex: 0,            //0 to 5, selects one of the drive algorithms
           bypass: 0
         });
+        this.effects["overdrive"] = fx;
         break
     }
-    // @ts-ignore
-    Howler.addEffect(this.effect);
+    if (fx) {
+      // @ts-ignore
+      Howler.addEffect(fx);
+    }
+
+  }
+
+  toggleEffect(effect: Effect): Effect[] {
+    if (this.effects[effect]) {
+      this.removeEffect(effect);
+    } else {
+      this.addEffect(effect);
+    }
+    return Object.keys(this.effects) as Effect[];
   }
 }
 

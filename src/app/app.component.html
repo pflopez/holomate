@@ -1,4 +1,5 @@
-<app-debugger [data]="data" *ngIf="started"></app-debugger>
-<app-holomate *ngIf="started"></app-holomate>
-<app-settings *ngIf="started" (addEffect)="addEffect($event)"></app-settings>
+<app-debugger [data]="data" *ngIf="showDebugger"></app-debugger>
+<app-holomate *ngIf="started && data.connected"></app-holomate>
+<app-settings *ngIf="started && data.connected"></app-settings>
 <button (click)="start()" *ngIf="!started">Start</button>
+<div *ngIf="started && !data.connected">No device connected :(</div>

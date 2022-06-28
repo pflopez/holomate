@@ -12,3 +12,14 @@
   --btn-size: 45px;
   --padding: 30px 20px;
 }
+
+
+button {
+  border: 1px solid var(--border-color);
+  padding: 10px 20px;
+  background: none;
+  border-radius: 4px;
+  &:hover, &:active{
+    background-color: var(--btn-bg-active-color);
+  }
+}
