@@ -1,17 +1,11 @@
 
 :host {
-  --main-bg-color: white;
-  --btn-bg-color:  white ;
-  --btn-bg-active-color:  #f0f0f0 ;
-  --border-color:  #a0a0a0;
-  --btn-size: 45px;
-  --padding:  30px 20px;
   display: flex;
   border: 1px solid var(--border-color);
   background-color: var(--main-bg-color);
   border-radius: 6px;
   justify-content: space-between;
-  margin: 20px auto;
+  margin: 13px auto;
   align-items: center;
   position: relative;
 }

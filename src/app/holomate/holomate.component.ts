@@ -26,6 +26,23 @@ export class HolomateComponent implements OnInit {
   ]
 
 
+  notesV1 = [
+    {note: 'B4', active: false},
+    {note: 'G#4', active: false},
+    {note: 'F4', active: false},
+    {note: 'D4', active: false},
+
+    {note: 'A#4', active: false},
+    {note: 'G4', active: false},
+    {note: 'E4', active: false},
+    {note: 'C#4', active: false},
+
+    {note: 'A4', active: false},
+    {note: 'F#4', active: false},
+    {note: 'D#4', active: false},
+    {note: 'C4', active: false},
+  ]
+
   activeNotes: string[] = [];
 
 

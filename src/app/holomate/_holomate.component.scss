@@ -1,11 +1,5 @@
 
 :host {
-  --main-bg-color: #0f2332;
-  --main-border-color: #5a5a5a;
-  --btn-bg-color: #989898;
-  --btn-bg-top-color: #eaeaea;
-  --btn-border-color: #4b5d69;
-  --btn-size: 80px;
   display: flex;
   border: 4px solid var(--main-border-color);
   background-color: var(--main-bg-color);
@@ -26,7 +20,7 @@
   justify-content: center;
 }
 
-button {
+.control {
   border-radius: 50%;
   width: var(--btn-size);
   height: var(--btn-size);

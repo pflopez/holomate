@@ -20,8 +20,10 @@
     "@angular/router": "^14.0.0",
     "@types/howler": "^2.2.7",
     "howler": "^2.2.3",
+    "howler-plugin-effect-chain": "^0.1.2",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
+    "tunajs": "^1.0.15",
     "webmidi": "^3.0.20",
     "zone.js": "~0.11.4"
   },

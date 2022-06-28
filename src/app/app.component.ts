@@ -1,5 +1,5 @@
 import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
-import {EMPTY_HOLOMATE_DATA, HolomateData} from "./holomate";
+import {Effect, EMPTY_HOLOMATE_DATA, HolomateData} from "./holomate";
 import {HolomateService} from "./holomate.service";
 
 @Component({
@@ -28,6 +28,10 @@ export class AppComponent implements OnInit {
 
     this.holomate.notes$.subscribe(() => this.changeDetection.detectChanges());
     this.holomate.knob$.subscribe(() => this.changeDetection.detectChanges());
+  }
+
+  addEffect(effect: Effect){
+    this.holomate.addEffect(effect);
   }
 
 

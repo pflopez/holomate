@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
-import {EMPTY_HOLOMATE_DATA, HolomateData} from "./holomate";
+import {Effect, EMPTY_HOLOMATE_DATA, HolomateData} from "./holomate";
 import {WebMidi} from "webmidi";
-import {BehaviorSubject} from "rxjs";
+import {BehaviorSubject, Subject} from "rxjs";
 import {Player} from "./player";
 
 @Injectable({
@@ -13,12 +13,14 @@ export class HolomateService {
 
   notes$ = new BehaviorSubject<string[]>(this.data.notes);
   knob$ = new BehaviorSubject<number>(this.data.knob);
+  effect$ = new Subject<Effect>();
 
   player: Player | undefined;
 
-  constructor() { }
+  constructor() {
+  }
 
-  enable(){
+  enable() {
     this.player = new Player();
     WebMidi.enable().then(() => this.onMidiEnabled())
       .catch(err => alert(err));
@@ -28,12 +30,12 @@ export class HolomateService {
     this.listenForDevice();
   }
 
-  listenForDevice(){
+  listenForDevice() {
     // Display available MIDI input devices
     if (WebMidi.inputs.length < 1) {
       this.data.name = "No device detected.";
     } else {
-      let inputNames: string[] =[];
+      let inputNames: string[] = [];
       WebMidi.inputs.forEach((device, index) => {
         inputNames.push(`${index}: ${device.name}`);
       });
@@ -43,12 +45,12 @@ export class HolomateService {
     }
   }
 
-  listenForNotes(){
+  listenForNotes() {
     // Listen to 'note on' events on channels 1, 2 and 3 of the first input MIDI device
     WebMidi.inputs[0].addListener("noteon", e => {
       this.data.notes.push(e.note.identifier);
       this.notes$.next(this.data.notes);
-      if(this.player){
+      if (this.player) {
         this.player.play(e.note.identifier);
       }
 
@@ -61,13 +63,23 @@ export class HolomateService {
     }, {channels: [1, 2, 3]});
   }
 
-
-
-  listenForKnob(){
+  listenForKnob() {
     WebMidi.inputs[0].addListener('controlchange', e => {
       const value = Math.round(e.value as number * 100);
       this.data.knob = value;
+      if (this.player) {
+        this.player.updateEffect(value);
+      }
       this.knob$.next(this.data.knob);
     }, {channels: [1, 2, 3]});
   }
+
+
+  addEffect(effect: Effect) {
+    if (this.player) {
+      this.player.addEffect(effect);
+    }
+    this.effect$.next(effect);
+  }
+
 }
