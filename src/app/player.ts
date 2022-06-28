@@ -39,7 +39,6 @@ export class Player {
   }
 
   updateEffect(value: number) {
-    console.log( value / 100);
     if(this.effects['delay']){
       this.effects['delay'].delayTime = value * 10;
     }
