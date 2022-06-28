@@ -8,15 +8,17 @@
   margin: 13px auto;
   align-items: center;
   position: relative;
+  flex-direction: column;
 }
 
 .grid {
   padding: var(--padding);
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 14px;
   align-items: center;
   justify-content: center;
+
 }
 
 .control {
@@ -27,6 +29,7 @@
   border: 1px solid var(--border-color);
   position: relative;
   z-index: 10;
+  background-size: contain;
   &.active {
     background-color: var(--btn-bg-active-color);
   }
@@ -38,6 +41,7 @@
   align-items: center;
   justify-content: center;
   padding: var(--padding);
+  padding-bottom: 0;
 }
 
 .control__knob {

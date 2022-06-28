@@ -2,7 +2,9 @@
   <div class="control control__knob" [style]="rotation$ | async"></div>
 </div>
 <section class="grid">
-  <div class="control" *ngFor="let note of notes$ | async" [ngClass]="{active: note.active}"></div>
+  <div class="control" *ngFor="let note of notes$ | async " [ngClass]="{active: note.active}"
+         [style.background-image]="'url(assets/icons/' + note.icon +')'">
+  </div>
 </section>
 
 
