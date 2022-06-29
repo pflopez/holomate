@@ -1,0 +1,3 @@
+<select (change)="selectPack($event)">
+  <option *ngFor="let pack of packNames; index as i" [value]="i"> {{pack}}</option>
+</select>

@@ -2,25 +2,11 @@ import {Howl, Howler} from 'howler';
 import 'howler-plugin-effect-chain';
 import Tuna from 'tunajs';
 import {Effect} from "./holomate";
+import {Pack, PACK_ONE, PACK_TWO} from "./pack";
 
 export class Player {
-
-  // notes
-  // C C# D D# E F F# G G# A A# B
-  sounds: Record<string, Howl> = {
-    'C4': _howl('assets/sounds/kick.wav'),
-    'C#4': _howl('assets/sounds/lev.wav'),
-    'D4': _howl('assets/sounds/tom.wav'),
-    'D#4': _howl('assets/sounds/hat.wav'),
-    'E4': _howl('assets/sounds/mp_abstract_decay.wav'),
-    'F4': _howl('assets/sounds/mp_abstract_fader.wav'),
-    'F#4': _howl('assets/sounds/mp_abstract_finger.wav'),
-    'G4': _howl('assets/sounds/mp_abstract_howl.wav'),
-    'G#4': _howl('assets/sounds/mp_abstract_odd.wav'),
-    'A4': _howl('assets/sounds/mp_layer_crumble.wav'),
-    'A#4': _howl('assets/sounds/mp_layer_krush.wav'),
-    'B4': _howl('assets/sounds/shot_mud.wav'),
-  }
+  packs: Pack[] = [PACK_ONE, PACK_TWO];
+  selectedPack = PACK_ONE;
 
   sound = new Howl({
     src: ['assets/sounds/kick.wav']
@@ -35,7 +21,7 @@ export class Player {
   }
 
   play(note: string) {
-    this.sounds[note].play();
+    this.selectedPack.sounds[note].play();
   }
 
   updateEffect(value: number) {
@@ -51,6 +37,19 @@ export class Player {
     if(this.effects['reverb']){
       this.effects['reverb'].wetLevel = value / 100;
     }
+  }
+
+  toggleEffect(effect: Effect): Effect[] {
+    if (this.effects[effect]) {
+      this.removeEffect(effect);
+    } else {
+      this.addEffect(effect);
+    }
+    return Object.keys(this.effects) as Effect[];
+  }
+
+  selectPack(packIndex: number){
+    this.selectedPack = this.packs[packIndex];
   }
 
   private removeEffect(effect: Effect) {
@@ -118,20 +117,4 @@ export class Player {
     }
 
   }
-
-  toggleEffect(effect: Effect): Effect[] {
-    if (this.effects[effect]) {
-      this.removeEffect(effect);
-    } else {
-      this.addEffect(effect);
-    }
-    return Object.keys(this.effects) as Effect[];
-  }
-}
-
-
-function _howl(file: string) {
-  return new Howl({
-    src: [file]
-  })
 }

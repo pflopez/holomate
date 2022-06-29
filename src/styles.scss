@@ -1,3 +1,12 @@
+:root {
+  --main-bg-color: #f2f0f0; // white;
+  --btn-bg-color: #f2f0f0; // white;
+  --btn-bg-active-color: #d0d0d0; // #f0f0f0;
+  --border-color: #a0a0a0;
+  --btn-size: 45px;
+  --padding: 30px 20px;
+}
+
 /* Box sizing rules */
 *,
 *::before,
@@ -36,7 +45,7 @@ body {
   text-rendering: optimizeSpeed;
   line-height: 1.5;
   font-family: sans-serif;
-  background-color: #f2f0f0;
+  background-color: var(--main-bg-color);
 }
 
 /* Remove list styles on ul, ol elements with a class attribute */

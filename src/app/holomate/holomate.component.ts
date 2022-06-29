@@ -43,7 +43,6 @@ export class HolomateComponent implements OnInit {
 
   rotation$ = this.holomate.knob$.pipe(map(value => {
     const deg = 15 + value * 330 / 100;
-    // transform to degree?
     return `transform: rotate(${deg}deg)`;
   }));
 

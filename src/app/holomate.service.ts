@@ -13,7 +13,6 @@ export class HolomateService {
 
   notes$ = new BehaviorSubject<string[]>(this.data.notes);
   knob$ = new BehaviorSubject<number>(this.data.knob);
-  effect$ = new Subject<Effect>();
   effects$ = new Subject<Effect[]>();
 
   player: Player | undefined;
@@ -76,10 +75,23 @@ export class HolomateService {
     }, {channels: [1, 2, 3]});
   }
 
-  toggleEffect(effect: Effect){
-    if(this.player){
+  toggleEffect(effect: Effect) {
+    if (this.player) {
       const effects = this.player.toggleEffect(effect);
       this.effects$.next(effects);
+    }
+  }
+
+  getPackNames(): string[] {
+    if (this.player) {
+      return this.player?.packs.map(pack => pack.name);
+    }
+    return [];
+  }
+
+  selectPack(packIndex: number){
+    if(this.player){
+      this.player.selectPack(packIndex);
     }
   }
 

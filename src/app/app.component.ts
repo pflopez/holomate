@@ -10,7 +10,6 @@ import {HolomateService} from "./holomate.service";
 export class AppComponent implements OnInit {
   title = 'holomate';
 
-
   data: HolomateData = EMPTY_HOLOMATE_DATA;
 
   showDebugger = false;
@@ -19,7 +18,6 @@ export class AppComponent implements OnInit {
 
   constructor(private holomate: HolomateService, private changeDetection: ChangeDetectorRef) {
   }
-
 
   ngOnInit() {
   }
