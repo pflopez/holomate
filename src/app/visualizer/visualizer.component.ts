@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {Howler} from "howler";
 
+const WIDTH = 500;
+const HEIGHT = 500;
+
 @Component({
   selector: 'app-visualizer',
   templateUrl: './visualizer.component.html',
@@ -14,19 +17,14 @@ export class VisualizerComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const WIDTH = 500;
-    const HEIGHT = 500;
+
     const canvas = document.querySelector('canvas');
     if (canvas) {
-      console.log('hay canvas')
       this.ctx = canvas.getContext('2d');
       canvas.width = WIDTH;
       canvas.height = HEIGHT;
-
       this.getAudio();
-
     }
-
   }
 
 
@@ -53,15 +51,15 @@ export class VisualizerComponent implements OnInit {
     }
     if(this.ctx){
       this.ctx.lineWidth = 4;
-      this.ctx.strokeStyle = "#ffc600";
-      this.ctx.clearRect(0, 0, 500, 500);
+      this.ctx.strokeStyle = "#ff7d00";
+      this.ctx.clearRect(0, 0, WIDTH, HEIGHT);
       this.ctx.beginPath();
       const bufferLength = this.analyser.frequencyBinCount;
       const sliceWidth = 500 / bufferLength;
       let x = 0;
       timeData.forEach((data: any, i: number) => {
         const v = data / 128;
-        const y = (v * 500) / 2;
+        const y = (v * HEIGHT) / 2;
         // draw our lines
         if (i === 0) {
           this.ctx.moveTo(x, y);

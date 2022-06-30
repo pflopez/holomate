@@ -1,12 +1,14 @@
 :host{
   display: block;
+  width: 100%;
 }
 
 select {
-  background: none;
+  background-color: var(--main-bg-color);
   padding: 5px;
   border-radius: 6px;
   border-color: var(--border-color);
   text-transform: uppercase;
   font-size: 14px;
+  width: 100%;
 }
