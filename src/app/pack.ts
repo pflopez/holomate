@@ -7,7 +7,6 @@ export class Pack {
   constructor(name: string, sounds: Record<string, Howl>) {
     this.name = name;
     this.sounds = sounds
-
   }
 
 }
@@ -28,24 +27,24 @@ export const PACK_ONE = new Pack( 'Pack One', {
 });
 
 export const PACK_TWO = new Pack('Pack Two', {
-  'C4': _howl('assets/sounds/2/kick_low.wav'),
-  'C#4': _howl('assets/sounds/2/low_noses.wav'),
-  'D4': _howl('assets/sounds/2/bass_drum.wav'),
-  'D#4': _howl('assets/sounds/2/snare.wav'),
-  'E4': _howl('assets/sounds/2/hit-hat.wav'),
-  'F4': _howl('assets/sounds/2/ride.wav'),
-  'F#4': _howl('assets/sounds/2/bass.wav'),
-  'G4': _howl('assets/sounds/2/alarm.wav'),
-  'G#4': _howl('assets/sounds/2/act_cmin.wav'),
-  'A4': _howl('assets/sounds/2/chord_em.wav'),
-  'A#4': _howl('assets/sounds/2/chord_dm7.wav'),
-  'B4': _howl('assets/sounds/2/chord_b.wav'),
+  'C4': _howl('assets/sounds/2/kick.wav'),
+  'C#4': _howl('assets/sounds/2/snare.wav'),
+  'D4': _howl('assets/sounds/2/rain.wav'),
+  'D#4': _howl('assets/sounds/2/clap.wav'),
+  'E4': _howl('assets/sounds/2/guiro.wav'),
+  'F4': _howl('assets/sounds/2/hat-closed.wav'),
+  'F#4': _howl('assets/sounds/2/hat-closed-b.wav'),
+  'G4': _howl('assets/sounds/2/hat-open.wav'),
+  'G#4': _howl('assets/sounds/2/hat-reverse.wav'),
+  'A4': _howl('assets/sounds/2/c-black.wav'),
+  'A#4': _howl('assets/sounds/2/c-sharp.wav'),
+  'B4': _howl('assets/sounds/2/e.wav'),
 });
-
 
 
 function _howl(file: string) {
   return new Howl({
-    src: [file]
+    src: [file],
+    volume: 0.5
   })
 }

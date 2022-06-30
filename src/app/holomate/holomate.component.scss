@@ -1,11 +1,9 @@
-
 :host {
   display: flex;
   border: 1px solid var(--border-color);
   background-color: var(--main-bg-color);
   border-radius: var(--border-radius);
   justify-content: space-between;
-  //margin: 13px auto;
   align-items: center;
   position: relative;
   flex-direction: column;

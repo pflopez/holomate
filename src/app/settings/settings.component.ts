@@ -1,7 +1,7 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Effect} from "../holomate";
 import {HolomateService} from "../holomate.service";
-import {map, tap} from "rxjs";
+import {map} from "rxjs";
 
 @Component({
   selector: 'app-settings',
