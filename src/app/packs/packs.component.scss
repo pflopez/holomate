@@ -1,0 +1,12 @@
+:host{
+  display: block;
+}
+
+select {
+  background: none;
+  padding: 5px;
+  border-radius: 6px;
+  border-color: var(--border-color);
+  text-transform: uppercase;
+  font-size: 14px;
+}

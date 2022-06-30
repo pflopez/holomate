@@ -1,9 +1,9 @@
 :host {
   display: flex;
-  flex-direction: column;
   align-items: center;
   height: 100vh;
   justify-content: center;
+  gap: 40px;
 }
 
 
@@ -15,4 +15,8 @@ button {
   &:hover, &:active{
     background-color: var(--btn-bg-active-color);
   }
+}
+
+app-packs{
+  margin-top: 10px;
 }

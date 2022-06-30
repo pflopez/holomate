@@ -1,6 +1,12 @@
 <app-debugger [data]="data" *ngIf="showDebugger"></app-debugger>
-<app-holomate *ngIf="started && data.connected"></app-holomate>
-<app-settings *ngIf="started && data.connected"></app-settings>
-<app-packs *ngIf="started && data.connected"></app-packs>
 <button (click)="start()" *ngIf="!started">Start</button>
 <div *ngIf="started && !data.connected">No device connected :(</div>
+
+<ng-container *ngIf="started && data.connected">
+  <app-holomate></app-holomate>
+  <div>
+    <app-settings></app-settings>
+    <app-packs></app-packs>
+  </div>
+
+</ng-container>

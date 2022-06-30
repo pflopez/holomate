@@ -1,4 +1,5 @@
 import {ChangeDetectorRef, Component, HostListener, OnInit} from '@angular/core';
+import { map } from 'rxjs';
 import {EMPTY_HOLOMATE_DATA, HolomateData} from "./holomate";
 import {HolomateService} from "./holomate.service";
 
@@ -16,11 +17,18 @@ export class AppComponent implements OnInit {
 
   started = false;
 
+  classes$ = this.holomate.notes$.pipe(
+    map( notes => {
+      return notes.map( note => note.replace('#', 'sharp')).join(' ')
+    })
+  )
+
   constructor(private holomate: HolomateService, private changeDetection: ChangeDetectorRef) {
   }
 
   ngOnInit() {
   }
+
 
   start() {
     this.started = true;

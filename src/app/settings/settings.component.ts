@@ -11,7 +11,6 @@ import {map, tap} from "rxjs";
 export class SettingsComponent implements OnInit {
 
   delayOn$ = this.holomate.effects$.pipe(
-    tap(effe => console.log(effe)),
     map(effects => effects.some(f => f === 'delay'))
   )
 

@@ -1,6 +1,6 @@
 import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {HolomateService} from "../holomate.service";
-import {map} from "rxjs";
+import {map, tap} from "rxjs";
 
 @Component({
   selector: 'app-holomate',
@@ -32,15 +32,6 @@ export class HolomateComponent implements OnInit {
   activeNotes: string[] = [];
 
 
-  notes$ = this.holomate.notes$.pipe(map(d => {
-    this.notes.forEach(k => {
-      k.active = d.some(note => note === k.note);
-    })
-    this.changeDetection.detectChanges();
-    return this.notes;
-
-  }));
-
   rotation$ = this.holomate.knob$.pipe(map(value => {
     const deg = 15 + value * 330 / 100;
     return `transform: rotate(${deg}deg)`;
@@ -51,6 +42,11 @@ export class HolomateComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.holomate.notes$.pipe(map(d => {
+        this.notes.forEach(k => {
+          k.active = d.some(note => note === k.note);
+        })
+      }),
+      tap(_ => this.changeDetection.detectChanges())).subscribe()
   }
 }
