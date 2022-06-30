@@ -9,7 +9,7 @@ export class Player {
   selectedPack = PACK_ONE;
 
   sound = new Howl({
-    src: ['assets/sounds/kick.wav']
+    src: ['assets/sounds/1/kick.wav']
   });
 
   tuna = new Tuna(Howler.ctx);
@@ -21,6 +21,8 @@ export class Player {
   }
 
   play(note: string) {
+    // do we want to stop the note?
+    this.selectedPack.sounds[note].stop();
     this.selectedPack.sounds[note].play();
   }
 
