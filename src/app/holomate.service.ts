@@ -3,6 +3,7 @@ import {Effect, EMPTY_HOLOMATE_DATA, HolomateData} from "./holomate";
 import {WebMidi} from "webmidi";
 import {BehaviorSubject, Subject} from "rxjs";
 import {Player} from "./player";
+import {Howl} from "howler";
 
 @Injectable({
   providedIn: 'root'
@@ -93,6 +94,13 @@ export class HolomateService {
     if(this.player){
       this.player.selectPack(packIndex);
     }
+  }
+
+  updateCustomPackNote(noteName: string, howl: Howl){
+    if(this.player){
+      this.player.updateCustomPackNote(noteName, howl);
+    }
+
   }
 
 }

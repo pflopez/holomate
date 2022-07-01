@@ -6,7 +6,8 @@
   <app-holomate></app-holomate>
   <div>
     <app-settings></app-settings>
-    <app-packs></app-packs>
+    <app-packs (selectPack)="selectPack($event)"></app-packs>
   </div>
   <app-visualizer [data]="data"></app-visualizer>
+  <app-custom-pack [ngClass]="{visible: showCustom}"></app-custom-pack>
 </ng-container>

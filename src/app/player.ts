@@ -8,6 +8,8 @@ export class Player {
   packs: Pack[] = [PACK_ONE, PACK_TWO];
   selectedPack = PACK_ONE;
 
+  customPack = new Pack('custom pack', {});
+
   sound = new Howl({
     src: ['assets/sounds/1/kick.wav']
   });
@@ -21,9 +23,11 @@ export class Player {
   }
 
   play(note: string) {
-    // do we want to stop the note?
-    this.selectedPack.sounds[note].stop();
-    this.selectedPack.sounds[note].play();
+    if(this.selectedPack?.sounds[note]){
+      // do we want to stop the note?
+      this.selectedPack.sounds[note].stop();
+      this.selectedPack.sounds[note].play();
+    }
   }
 
   updateEffect(value: number) {
@@ -51,7 +55,12 @@ export class Player {
   }
 
   selectPack(packIndex: number){
-    this.selectedPack = this.packs[packIndex];
+    if(packIndex > this.packs.length){
+      this.selectedPack = this.customPack;
+    }else {
+      this.selectedPack = this.packs[packIndex];
+    }
+
   }
 
   private removeEffect(effect: Effect) {
@@ -118,5 +127,11 @@ export class Player {
       Howler.addEffect(fx);
     }
 
+  }
+
+
+  updateCustomPackNote(noteName: string, howl: Howl){
+    // this.player.updateCustomPackNote(noteName, howl);
+    this.customPack.sounds[noteName] = howl;
   }
 }

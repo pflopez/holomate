@@ -7,6 +7,7 @@ import {HolomateComponent} from './holomate/holomate.component';
 import {SettingsComponent} from './settings/settings.component';
 import {PacksComponent} from './packs/packs.component';
 import {VisualizerComponent} from './visualizer/visualizer.component';
+import { CustomPackComponent } from './custom-pack/custom-pack.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import {VisualizerComponent} from './visualizer/visualizer.component';
     HolomateComponent,
     SettingsComponent,
     PacksComponent,
-    VisualizerComponent
+    VisualizerComponent,
+    CustomPackComponent
 
   ],
   imports: [

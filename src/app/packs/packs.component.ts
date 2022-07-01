@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import {HolomateService} from "../holomate.service";
 
 @Component({
@@ -10,11 +10,13 @@ export class PacksComponent {
 
   packNames = this.holomate.getPackNames();
 
+  @Output() selectPack = new EventEmitter<number>();
+
   constructor(private holomate: HolomateService) {
   }
 
-  selectPack(event: any) {
-    this.holomate.selectPack(event.target.value as number)
+  select(event: any) {
+    this.selectPack.emit(event.target.value as number);
   }
 
 }

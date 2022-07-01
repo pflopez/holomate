@@ -12,11 +12,20 @@ button {
   padding: 10px 20px;
   background: none;
   border-radius: 4px;
-  &:hover, &:active{
+
+  &:hover, &:active {
     background-color: var(--btn-bg-active-color);
   }
 }
 
-app-packs{
+app-packs {
   margin-top: 10px;
+}
+
+app-custom-pack {
+  display: none;
+
+  &.visible {
+    display: block;
+  }
 }

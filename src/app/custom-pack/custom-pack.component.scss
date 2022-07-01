@@ -1,0 +1,20 @@
+:host {
+  display: block;
+  border: 1px solid var(--border-color);
+  background-color: var(--main-bg-color);
+  border-radius: var(--border-radius);
+  padding: 10px;
+
+}
+
+.control {
+  padding: 5px 5px 5px 40px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+
+input {
+  color: #888;
+  font-size: 13px;
+}

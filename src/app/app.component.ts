@@ -16,6 +16,8 @@ export class AppComponent {
 
   started = false;
 
+  showCustom = false;
+
   constructor(private holomate: HolomateService) {
   }
 
@@ -31,6 +33,11 @@ export class AppComponent {
       // D key
       this.showDebugger = !this.showDebugger;
     }
+  }
+
+  selectPack(index: number) {
+    this.showCustom = index > this.holomate.getPackNames().length;
+    this.holomate.selectPack(index);
   }
 
 }
