@@ -13,9 +13,7 @@ const HEIGHT = 500;
 export class VisualizerComponent implements OnInit {
 
   @Input() data: HolomateData = EMPTY_HOLOMATE_DATA;
-
-
-
+  
   analyzer: any;
   ctx: any;
 
@@ -58,7 +56,7 @@ export class VisualizerComponent implements OnInit {
     const color = COLORS[this.data.notes[0]] || '#D0D0D0';
     if (this.ctx) {
 
-      this.ctx.lineWidth = 4;
+      this.ctx.lineWidth = 2;
       this.ctx.strokeStyle = color;
       this.ctx.clearRect(0, 0, WIDTH, HEIGHT);
       this.ctx.beginPath();

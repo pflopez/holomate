@@ -41,9 +41,6 @@ export const PACK_TWO = new Pack('Pack Two', {
   'B4': _howl('assets/sounds/2/e.wav'),
 });
 
-export const PACK_CUSTOM = new Pack('Pack Two', {});
-
-
 function _howl(file: string) {
   return new Howl({
     src: [file],

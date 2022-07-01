@@ -6,24 +6,20 @@ import {Pack, PACK_ONE, PACK_TWO} from "./pack";
 
 export class Player {
   packs: Pack[] = [PACK_ONE, PACK_TWO];
-  selectedPack = PACK_ONE;
 
   customPack = new Pack('custom pack', {});
 
-  sound = new Howl({
-    src: ['assets/sounds/1/kick.wav']
-  });
+  selectedPack = PACK_ONE;
 
   tuna = new Tuna(Howler.ctx);
 
   effects: Partial<Record<Effect, any>> = {};
 
   constructor() {
-
   }
 
   play(note: string) {
-    if(this.selectedPack?.sounds[note]){
+    if (this.selectedPack?.sounds[note]) {
       // do we want to stop the note?
       this.selectedPack.sounds[note].stop();
       this.selectedPack.sounds[note].play();
@@ -31,16 +27,16 @@ export class Player {
   }
 
   updateEffect(value: number) {
-    if(this.effects['delay']){
+    if (this.effects['delay']) {
       this.effects['delay'].delayTime = value * 10;
     }
-    if(this.effects['overdrive']){
+    if (this.effects['overdrive']) {
       this.effects['overdrive'].drive = value / 100;
     }
-    if(this.effects['low-pass']){
+    if (this.effects['low-pass']) {
       this.effects['low-pass'].frequency = value * 10;
     }
-    if(this.effects['reverb']){
+    if (this.effects['reverb']) {
       this.effects['reverb'].wetLevel = value / 100;
     }
   }
@@ -54,13 +50,17 @@ export class Player {
     return Object.keys(this.effects) as Effect[];
   }
 
-  selectPack(packIndex: number){
-    if(packIndex > this.packs.length){
+  selectPack(packIndex: number) {
+    if (packIndex > this.packs.length) {
       this.selectedPack = this.customPack;
-    }else {
+    } else {
       this.selectedPack = this.packs[packIndex];
     }
 
+  }
+
+  updateCustomPackNote(noteName: string, howl: Howl) {
+    this.customPack.sounds[noteName] = howl;
   }
 
   private removeEffect(effect: Effect) {
@@ -71,7 +71,6 @@ export class Player {
       delete this.effects[effect];
     }
   }
-
 
   private addEffect(effect: Effect) {
     let fx: any;
@@ -129,9 +128,4 @@ export class Player {
 
   }
 
-
-  updateCustomPackNote(noteName: string, howl: Howl){
-    // this.player.updateCustomPackNote(noteName, howl);
-    this.customPack.sounds[noteName] = howl;
-  }
 }
