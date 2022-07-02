@@ -10,6 +10,8 @@ import {map} from "rxjs";
 })
 export class SettingsComponent implements OnInit {
 
+  holdOn$ = this.holomate.hold$;
+
   delayOn$ = this.holomate.effects$.pipe(
     map(effects => effects.some(f => f === 'delay'))
   )
@@ -34,6 +36,10 @@ export class SettingsComponent implements OnInit {
 
   effect(effect: Effect) {
     this.holomate.toggleEffect(effect);
+  }
+
+  toggle(setting: string){
+    this.holomate.updateSetting(setting);
   }
 
 

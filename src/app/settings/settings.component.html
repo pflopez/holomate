@@ -1,3 +1,4 @@
+<button (click)="toggle('hold')" [ngClass]="{active: (holdOn$ | async)}" class="hold">Hold</button>
 <button (click)="effect('delay')" [ngClass]="{active: (delayOn$ | async)}">delay</button>
 <button (click)="effect('low-pass')" [ngClass]="{active: (filterOn$ | async)}">low pass</button>
 <button (click)="effect('overdrive')" [ngClass]="{active: (overdriveOn$ | async)}">overdrive</button>

@@ -3,10 +3,12 @@ export interface HolomateData {
   knob: number
   notes :string[];
   connected: boolean;
+  hold: boolean
 }
 
-export const EMPTY_HOLOMATE_DATA = { name: '', knob: 0, notes: [], connected: false}
+export const EMPTY_HOLOMATE_DATA = { name: '', knob: 0, notes: [], connected: false, hold: true}
 
+export const DEFAULT_VOLUME = 0.5;
 
 export type Effect = 'delay' | 'low-pass' | 'overdrive' | 'reverb';
 

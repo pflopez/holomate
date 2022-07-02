@@ -1,7 +1,7 @@
 import {Howl, Howler} from 'howler';
 import 'howler-plugin-effect-chain';
 import Tuna from 'tunajs';
-import {Effect} from "./holomate";
+import {DEFAULT_VOLUME, Effect} from "./holomate";
 import {Pack, PACK_ONE, PACK_TWO} from "./pack";
 
 export class Player {
@@ -20,9 +20,16 @@ export class Player {
 
   play(note: string) {
     if (this.selectedPack?.sounds[note]) {
-      // do we want to stop the note?
       this.selectedPack.sounds[note].stop();
+      this.selectedPack.sounds[note].volume(DEFAULT_VOLUME)
       this.selectedPack.sounds[note].play();
+    }
+  }
+
+  stop(note: string){
+    if (this.selectedPack?.sounds[note]) {
+      // this.selectedPack.sounds[note].stop();
+      this.selectedPack.sounds[note].fade(DEFAULT_VOLUME, 0, 40);
     }
   }
 
@@ -59,9 +66,17 @@ export class Player {
 
   }
 
-  updateCustomPackNote(noteName: string, howl: Howl) {
-    this.customPack.sounds[noteName] = howl;
+  updateCustomPackNote(noteName: string, data: string, fileName: string) {
+    // Create a Howler sound
+    const sound = new Howl({
+      src: data,
+      format: fileName,
+      volume: DEFAULT_VOLUME
+    });
+    this.customPack.sounds[noteName] = sound;
   }
+
+
 
   private removeEffect(effect: Effect) {
     const tunaEffect = this.effects[effect];

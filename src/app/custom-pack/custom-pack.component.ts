@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {Howl} from "howler";
 import {HolomateService} from "../holomate.service";
 
 @Component({
@@ -27,7 +26,7 @@ export class CustomPackComponent implements OnInit {
     {note: 'D4', icon: 'vientito-12.png'},
   ]
 
-  constructor( private  holomate: HolomateService) {
+  constructor(private holomate: HolomateService) {
   }
 
   ngOnInit(): void {
@@ -39,14 +38,8 @@ export class CustomPackComponent implements OnInit {
       const reader = new FileReader();
       reader.addEventListener('load', () => {
         let data = reader.result;
-        if(data){
-          // Create a Howler sound
-          const sound = new Howl({
-            src: data as string,
-            format: file.name.split('.').pop().toLowerCase(),
-            volume: 0.5
-          });
-          this.holomate.updateCustomPackNote(note,sound);
+        if (data) {
+          this.holomate.updateCustomPackNote(note, data as string, file.name.split('.').pop().toLowerCase(),);
         }
 
       });

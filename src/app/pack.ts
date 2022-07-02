@@ -1,4 +1,5 @@
 import {Howl} from "howler";
+import {DEFAULT_VOLUME} from "./holomate";
 
 export class Pack {
   name: string = '';
@@ -44,6 +45,6 @@ export const PACK_TWO = new Pack('Pack Two', {
 function _howl(file: string) {
   return new Howl({
     src: [file],
-    volume: 0.5
+    volume: DEFAULT_VOLUME
   })
 }

@@ -15,6 +15,7 @@ export class HolomateService {
   notes$ = new BehaviorSubject<string[]>(this.data.notes);
   knob$ = new BehaviorSubject<number>(this.data.knob);
   effects$ = new Subject<Effect[]>();
+  hold$ = new BehaviorSubject<boolean>(this.data.hold);
 
   player: Player | undefined;
 
@@ -61,6 +62,9 @@ export class HolomateService {
     WebMidi.inputs[0].addListener("noteoff", e => {
       this.data.notes = this.data.notes.filter((note) => note != e.note.identifier);
       this.notes$.next(this.data.notes);
+      if(!this.data.hold){
+        this.player?.stop(e.note.identifier)
+      }
 
     }, {channels: [1, 2, 3]});
   }
@@ -96,11 +100,21 @@ export class HolomateService {
     }
   }
 
-  updateCustomPackNote(noteName: string, howl: Howl){
+  updateCustomPackNote(noteName: string, data: string, fileName: string) {
     if(this.player){
-      this.player.updateCustomPackNote(noteName, howl);
+      this.player.updateCustomPackNote(noteName, data, fileName);
     }
+  }
 
+
+
+  updateSetting(setting: string){
+    switch (setting){
+      case 'hold':
+        this.data.hold = !this.data.hold;
+        this.hold$.next(this.data.hold);
+        break;
+    }
   }
 
 }
