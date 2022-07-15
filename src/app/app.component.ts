@@ -1,6 +1,7 @@
-import {Component, HostListener} from '@angular/core';
+import {Component, HostListener, Inject, Renderer2} from '@angular/core';
 import {EMPTY_HOLOMATE_DATA, HolomateData} from "./holomate";
 import {HolomateService} from "./holomate.service";
+import {DOCUMENT} from "@angular/common";
 
 @Component({
   selector: 'app-root',
@@ -18,7 +19,12 @@ export class AppComponent {
 
   showCustom = false;
 
-  constructor(private holomate: HolomateService) {
+  inverted = false;
+
+  constructor(
+    @Inject(DOCUMENT) private document: Document,
+    private renderer: Renderer2,
+    private holomate: HolomateService) {
   }
 
 
@@ -40,4 +46,13 @@ export class AppComponent {
     this.holomate.selectPack(index);
   }
 
+  toggleTheme(){
+
+    if(this.inverted){
+      this.renderer.removeClass(this.document.body, 'inverted');
+    }else{
+      this.renderer.addClass(this.document.body, 'inverted');
+    }
+    this.inverted =!this.inverted;
+  }
 }

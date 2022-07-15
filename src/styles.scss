@@ -5,7 +5,8 @@
   --border-color: #a0a0a0;
   --btn-size: 45px;
   --padding: 30px 20px;
-  --border-radius:  6px;
+  --border-radius: 6px;
+  --app-width: 205px;
 }
 
 /* Box sizing rules */
@@ -47,6 +48,7 @@ body {
   line-height: 1.5;
   font-family: sans-serif;
   background-color: var(--main-bg-color);
+  color: var(--font-color);
 }
 
 /* Remove list styles on ul, ol elements with a class attribute */
@@ -88,3 +90,45 @@ select {
     scroll-behavior: auto !important;
   }
 }
+
+@mixin dark() {
+  --main-bg-color: #202020;
+  --btn-bg-color: #202020;
+  --holomate-bg-color: #35363a;
+  --btn-bg-active-color: #f8f7f7;
+  --border-color: transparent;
+  --font-color:#111111;
+  --settings-bg-color: #f8f7f7;
+}
+
+@mixin light() {
+  --main-bg-color: #f2f0f0;
+  --btn-bg-color: #202020;
+  --holomate-bg-color: #ddddd8;
+  --btn-bg-active-color: #d0d0d0;
+  --border-color: transparent;
+  --font-color: #202020;
+  --settings-bg-color: #ddddd8; // --holomate-bg-color
+}
+
+
+@media (prefers-color-scheme: dark) {
+  body {
+    @include dark;
+  }
+
+  body.inverted {
+    @include light;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  body {
+    @include light;
+  }
+  body.inverted {
+    @include dark;
+  }
+}
+
+

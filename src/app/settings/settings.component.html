@@ -1,5 +1,6 @@
-<button (click)="toggle('hold')" [ngClass]="{active: (holdOn$ | async)}" class="hold">Hold</button>
-<button (click)="effect('delay')" [ngClass]="{active: (delayOn$ | async)}">delay</button>
-<button (click)="effect('low-pass')" [ngClass]="{active: (filterOn$ | async)}">low pass</button>
-<button (click)="effect('overdrive')" [ngClass]="{active: (overdriveOn$ | async)}">overdrive</button>
-<button (click)="effect('reverb')" [ngClass]="{active: (reverbOn$ | async)}">reverb</button>
+<div class="label">FX:</div>
+<button (click)="toggle('hold')" [ngClass]="{active: (holdOn$ | async)}" class="hold">H</button>
+<button (click)="effect('delay')" [ngClass]="{active: (delayOn$ | async)}">D</button>
+<button (click)="effect('low-pass')" [ngClass]="{active: (filterOn$ | async)}">L</button>
+<button (click)="effect('overdrive')" [ngClass]="{active: (overdriveOn$ | async)}">O</button>
+<button (click)="effect('reverb')" [ngClass]="{active: (reverbOn$ | async)}">R</button>

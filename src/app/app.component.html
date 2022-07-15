@@ -4,10 +4,12 @@
 
 <ng-container *ngIf="started && data.connected">
   <app-holomate></app-holomate>
-  <div>
+  <div class="tools">
     <app-settings></app-settings>
     <app-packs (selectPack)="selectPack($event)"></app-packs>
+    <button (click)="toggleTheme()" class="theme-toggle" [ngClass]="{'inverse': inverted}">Toggle Theme</button>
   </div>
   <app-visualizer [data]="data"></app-visualizer>
   <app-custom-pack [ngClass]="{visible: showCustom}"></app-custom-pack>
+
 </ng-container>

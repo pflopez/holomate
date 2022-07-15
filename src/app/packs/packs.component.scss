@@ -4,9 +4,10 @@
 }
 
 select {
-  background-color: var(--main-bg-color);
+  color: var(--font-color);
+  background-color: var(--settings-bg-color);
   padding: 5px;
-  border-radius: 6px;
+  border-radius: calc(var(--border-radius) / 2);
   border-color: var(--border-color);
   text-transform: uppercase;
   font-size: 14px;

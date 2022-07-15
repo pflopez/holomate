@@ -3,7 +3,12 @@
   align-items: center;
   height: 100vh;
   justify-content: center;
-  gap: 40px;
+  gap: 10px;
+  flex-direction: column;
+}
+
+.tools {
+  width: var(--app-width);
 }
 
 
@@ -28,4 +33,9 @@ app-custom-pack {
   &.visible {
     display: block;
   }
+}
+
+.theme-toggle{
+  background-color: var(--holomate-bg-color);
+  margin: 20px;
 }
