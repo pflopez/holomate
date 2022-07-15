@@ -3,8 +3,7 @@
   align-items: center;
   height: 100vh;
   justify-content: center;
-  gap: 10px;
-  flex-direction: column;
+  gap: 30px;
 }
 
 .tools {
@@ -37,5 +36,6 @@ app-custom-pack {
 
 .theme-toggle{
   background-color: var(--holomate-bg-color);
-  margin: 20px;
+  margin: 20px 0;
+  width: 100%;
 }

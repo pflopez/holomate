@@ -3,13 +3,15 @@
 <div *ngIf="started && !data.connected">No device connected :(</div>
 
 <ng-container *ngIf="started && data.connected">
-  <app-holomate></app-holomate>
-  <div class="tools">
-    <app-settings></app-settings>
-    <app-packs (selectPack)="selectPack($event)"></app-packs>
-    <button (click)="toggleTheme()" class="theme-toggle" [ngClass]="{'inverse': inverted}">Toggle Theme</button>
-  </div>
-  <app-visualizer [data]="data"></app-visualizer>
+  <section class="main">
+    <app-holomate></app-holomate>
+    <div class="tools">
+      <app-settings></app-settings>
+      <app-packs (selectPack)="selectPack($event)"></app-packs>
+      <button (click)="toggleTheme()" class="theme-toggle" [ngClass]="{'inverse': inverted}">Toggle Theme</button>
+    </div>
+  </section>
   <app-custom-pack [ngClass]="{visible: showCustom}"></app-custom-pack>
 
+  <app-visualizer [data]="data"></app-visualizer>
 </ng-container>
