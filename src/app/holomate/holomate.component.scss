@@ -29,6 +29,7 @@
   position: relative;
   z-index: 10;
   background-size: contain;
+  transition-duration: 40ms;
   &.active {
     background-color: var(--btn-bg-active-color);
   }
@@ -57,5 +58,8 @@
     position: absolute;
     left: 50%;
     bottom: 0;
+    transition-property: background-color, color;
+    transition-duration: 300ms;
+    transition-timing-function: ease-in-out;
   }
 }

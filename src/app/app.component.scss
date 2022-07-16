@@ -35,8 +35,12 @@ app-custom-pack {
   }
 }
 
-.theme-toggle{
+.theme-toggle, .start {
   background-color: var(--holomate-bg-color);
   margin: 20px 0;
+  cursor: pointer;
+
+}
+.theme-toggle {
   width: 100%;
 }

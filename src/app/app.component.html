@@ -1,5 +1,5 @@
 <app-debugger [data]="data" *ngIf="showDebugger"></app-debugger>
-<button (click)="start()" *ngIf="!started">Start</button>
+<button (click)="start()" *ngIf="!started" class="start">Start</button>
 <div *ngIf="started && !data.connected">No device connected :(</div>
 
 <ng-container *ngIf="started && data.connected">

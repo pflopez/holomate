@@ -111,7 +111,6 @@ select {
   --settings-bg-color: #ddddd8; // --holomate-bg-color
 }
 
-
 @media (prefers-color-scheme: dark) {
   body {
     @include dark;
@@ -131,4 +130,10 @@ select {
   }
 }
 
+
+* {
+  transition-property: background-color, color;
+  transition-duration: 300ms;
+  transition-timing-function: ease-in-out;
+}
 
