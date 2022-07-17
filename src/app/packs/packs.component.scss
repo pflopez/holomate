@@ -10,6 +10,6 @@ select {
   border-radius: calc(var(--border-radius) / 2);
   border-color: var(--border-color);
   text-transform: uppercase;
-  font-size: 14px;
+  font-size: var(--font-size);
   width: 100%;
 }

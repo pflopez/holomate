@@ -3,7 +3,7 @@
   background-color: var(--main-bg-color);
   border-radius: var(--border-radius);
   display: flex;
-  align-items: center;
+  align-items: stretch;
   gap: 5px;
 }
 
@@ -18,8 +18,10 @@ button {
   border: 2px solid var(--button-color);
   color: var(--button-color);
   border-radius: calc(var(--border-radius) / 2);
+  transition-duration: 100ms;
   &.active {
-    background-color: var(--holomate-bg-color);
+    background-color: var(--button-color);
+    color: #f2f0f0;
   }
 }
 
@@ -28,6 +30,8 @@ button {
   background-color: var(--settings-bg-color);
   border-radius: calc(var(--border-radius) / 2);
   padding: 1px 3px;
+  display: flex;
+  align-items: center;
 }
 
 

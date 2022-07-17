@@ -20,13 +20,10 @@ input {
 }
 
 ::-webkit-file-upload-button {
-  background-color: var(--settings-bg-color);
-  color: var(--font-color);
+  background-color: var(--holomate-bg-color);
+  color: var(--btn-font-color);
   border: none;
   border-radius: var(--border-radius);
   padding: 6px 9px;
   margin-right: 10px;
-}
-input {
-  width: var(--app-width);
 }

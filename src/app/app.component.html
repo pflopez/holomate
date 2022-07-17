@@ -5,11 +5,9 @@
 <ng-container *ngIf="started && data.connected">
   <section class="main">
     <app-holomate></app-holomate>
-    <div class="tools">
-      <app-settings></app-settings>
-      <app-packs (selectPack)="selectPack($event)"></app-packs>
-      <button (click)="toggleTheme()" class="theme-toggle" [ngClass]="{'inverse': inverted}">Toggle Theme</button>
-    </div>
+    <app-settings></app-settings>
+    <app-packs (selectPack)="selectPack($event)"></app-packs>
+    <button (click)="toggleTheme()" class="theme-toggle" [ngClass]="{'inverse': inverted}">Toggle Theme</button>
   </section>
   <app-custom-pack [ngClass]="{visible: showCustom}"></app-custom-pack>
 
