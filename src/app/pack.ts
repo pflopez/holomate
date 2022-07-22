@@ -12,7 +12,7 @@ export class Pack {
 
 }
 
-export const PACK_ONE = new Pack( 'Pack One', {
+export const PACK_ONE = new Pack( 'space', {
   'C4': _howl('assets/sounds/1/kick.wav'),
   'C#4': _howl('assets/sounds/1/lev.wav'),
   'D4': _howl('assets/sounds/1/tom.wav'),
@@ -27,7 +27,7 @@ export const PACK_ONE = new Pack( 'Pack One', {
   'B4': _howl('assets/sounds/1/shot_mud.wav'),
 });
 
-export const PACK_TWO = new Pack('Pack Two', {
+export const PACK_TWO = new Pack('cueva', {
   'C4': _howl('assets/sounds/2/kick.wav'),
   'C#4': _howl('assets/sounds/2/snare.wav'),
   'D4': _howl('assets/sounds/2/rain.wav'),
