@@ -22,7 +22,7 @@ button {
   background-color: transparent;
   background-size: contain;
   background-position: center center;
-  background-repeat: none;
+  background-repeat: no-repeat;
 
   &.active {
     background-color: var(--button-color);
@@ -61,36 +61,36 @@ button {
 }
 
 .hold {
-  background-image: url("/assets/emojis/hold.png");
+  background-image: url("../../assets/emojis/hold.png");
   &.active {
-    background-image: url("/assets/emojis/hold-w.png");
+    background-image: url("../../assets/emojis/hold-w.png");
   }
 }
 
 .overdrive {
-  background-image: url("/assets/emojis/overdrive.png");
+  background-image: url("../../assets/emojis/overdrive.png");
   &.active {
-    background-image: url("/assets/emojis/overdrive-w.png");
+    background-image: url("../../assets/emojis/overdrive-w.png");
   }
 }
 
 .delay {
-  background-image: url("/assets/emojis/delay.png");
+  background-image: url("../../assets/emojis/delay.png");
   &.active {
-    background-image: url("/assets/emojis/delay-w.png");
+    background-image: url("../../assets/emojis/delay-w.png");
   }
 }
 
 .reverb {
-  background-image: url("/assets/emojis/reverb.png");
+  background-image: url("../../assets/emojis/reverb.png");
   &.active {
-    background-image: url("/assets/emojis/reverb-w.png");
+    background-image: url("../../assets/emojis/reverb-w.png");
   }
 }
 
 .filter {
-  background-image: url("/assets/emojis/filter.png");
+  background-image: url("../../assets/emojis/filter.png");
   &.active {
-    background-image: url("/assets/emojis/filter-w.png");
+    background-image: url("../../assets/emojis/filter-w.png");
   }
 }

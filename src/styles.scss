@@ -9,7 +9,7 @@
   --font-color: #111111;
   --settings-bg-color: #f8f7f7;
   --border-knob-color: #ddddd8;
-  --logo-src: url('/assets/logo/logo-white.png')
+  --logo-src: url('./assets/logo/logo-white.png')
 }
 
 @mixin light() {
@@ -23,7 +23,7 @@
   --font-color: #202020;
   --settings-bg-color: var(--holomate-bg-color);
   --border-knob-color: var(--holomate-bg-color);
-  --logo-src: url('/assets/logo/logo-black.png');
+  --logo-src: url('./assets/logo/logo-black.png');
 }
 
 :root {
