@@ -1,13 +1,15 @@
 <app-debugger [data]="data" *ngIf="showDebugger"></app-debugger>
-<button (click)="start()" *ngIf="!started" class="start">Start</button>
+<div class="logo"></div>
+<button (click)="start()" *ngIf="!started" class="start">PLAY</button>
 <div *ngIf="started && !data.connected">No device connected :(</div>
 
 <ng-container *ngIf="started && data.connected">
   <section class="main">
+    <button (click)="toggleTheme()" class="theme-toggle" [ngClass]="{'inverse': inverted}"></button>
     <app-holomate></app-holomate>
     <app-settings></app-settings>
     <app-packs (selectPack)="selectPack($event)"></app-packs>
-    <button (click)="toggleTheme()" class="theme-toggle" [ngClass]="{'inverse': inverted}">Toggle Theme</button>
+
   </section>
   <app-custom-pack [ngClass]="{visible: showCustom}"></app-custom-pack>
 

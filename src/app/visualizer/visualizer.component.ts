@@ -13,7 +13,7 @@ const HEIGHT = 500;
 export class VisualizerComponent implements OnInit {
 
   @Input() data: HolomateData = EMPTY_HOLOMATE_DATA;
-  
+
   analyzer: any;
   ctx: any;
 

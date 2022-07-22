@@ -42,18 +42,19 @@
   padding: var(--padding);
   padding-bottom: 0;
   align-self: flex-end;
-  padding-right: 43px;
+  padding-right: 55px;
 }
 
 .control__knob {
   --btn-size: 90px;
-  background-color: #ff7e00;
+  transition-duration: 150ms;
+  transition-property: background-color, color;
   &::after {
     content: "";
     display: block;
     width: 2px;
     height: 40%;
-    background-color: var(--main-bg-color);
+    background-color: var(--border-knob-color);
     position: absolute;
     left: 50%;
     bottom: -1px;
@@ -61,4 +62,22 @@
     transition-duration: 300ms;
     transition-timing-function: ease-in-out;
   }
+
+  &.hold {
+    background-color: var(--color-green);
+  }
+  &.delay {
+    background-color: var(--color-purple);
+  }
+  &.low-pass {
+    background-color: var(--color-blue);
+  }
+  &.overdrive {
+    background-color: var(--color-orange);
+  }
+  &.reverb {
+    background-color: var(--color-red);
+  }
+
+
 }

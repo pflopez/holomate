@@ -44,6 +44,23 @@ app-custom-pack {
 }
 
 .theme-toggle {
-  width: 100%;
-  font-size: 14px;
+  border-radius: 50%;
+  height: 25px;
+  width: 25px;
+  padding: 0;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+}
+
+.logo {
+  position: fixed;
+  top: 30px;
+  left: 30px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: var(--logo-src);
+  width: 100px;
+  height: 40px;
+  background-size: contain;
 }

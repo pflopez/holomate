@@ -1,7 +1,7 @@
 <section class="grid">
   <div class="control"
        *ngFor="let note of notes"
-       [style.background-image]="'url(assets/icons/' + note.icon +')'">
+       [style.background-image]="'url(assets/emojis/' + note.icon +')'">
     <input type="file" (change)="useFile($event, note.note)">
   </div>
 </section>

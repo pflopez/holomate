@@ -1,10 +1,10 @@
 <div class="knob-space">
-  <div class="control control__knob" [style]="rotation$ | async"></div>
+  <div class="control control__knob" [class]="color$ |async" [style]="rotation$ | async"></div>
 </div>
 <section class="grid">
   <div class="control"
        *ngFor="let note of notes"
        [ngClass]="{active: note.active}"
-       [style.background-image]="'url(assets/icons/' + note.icon +')'">
+       [style.background-image]="'url(assets/emojis/' + note.icon +')'">
   </div>
 </section>

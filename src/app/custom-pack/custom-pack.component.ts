@@ -8,22 +8,23 @@ import {HolomateService} from "../holomate.service";
 })
 export class CustomPackComponent implements OnInit {
 
+
   notes = [
-    {note: 'A4', icon: 'vientito-01.png'},
-    {note: 'A#4', icon: 'vientito-02.png'},
-    {note: 'B4', icon: 'vientito-03.png'},
+    {note: 'A4', icon: 'emoji-04.png'},
+    {note: 'A#4', icon: 'emoji-05.png'},
+    {note: 'B4', icon: 'emoji-06.png'},
 
-    {note: 'F#4', icon: 'vientito-04.png'},
-    {note: 'G4', icon: 'vientito-05.png'},
-    {note: 'G#4', icon: 'vientito-06.png'},
+    {note: 'F#4', icon: 'emoji-07.png'},
+    {note: 'G4', icon: 'emoji-08.png'},
+    {note: 'G#4', icon: 'emoji-09.png'},
 
-    {note: 'D#4', icon: 'vientito-07.png'},
-    {note: 'E4', icon: 'vientito-08.png'},
-    {note: 'F4', icon: 'vientito-09.png'},
+    {note: 'D#4', icon: 'emoji-10.png'},
+    {note: 'E4', icon: 'emoji-11.png'},
+    {note: 'F4', icon: 'emoji-12.png'},
 
-    {note: 'C4', icon: 'vientito-10.png'},
-    {note: 'C#4', icon: 'vientito-11.png'},
-    {note: 'D4', icon: 'vientito-12.png'},
+    {note: 'C4', icon: 'emoji-13.png'},
+    {note: 'C#4', icon: 'emoji-14.png'},
+    {note: 'D4', icon: 'emoji-15.png'},
   ]
 
   constructor(private holomate: HolomateService) {
