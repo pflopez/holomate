@@ -53,7 +53,7 @@ export class VisualizerComponent implements OnInit {
       this.analyzer.getByteTimeDomainData(timeData);
     }
 
-    const color = COLORS[this.data.notes[0]] || '#D0D0D0';
+    const color = '#D0D0D0'; //COLORS[this.data.notes[0]] || ;
     if (this.ctx) {
 
       this.ctx.lineWidth = 2;
